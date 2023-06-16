@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Flex,
   Box,
@@ -8,6 +8,7 @@ import {
   Stack,
   Card,
   CardBody,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { Data, Keyboard, Monitor } from "./Icons";
 import { IoLogoJavascript, IoLogoNodejs } from "react-icons/io";
@@ -30,65 +31,63 @@ import { VscGithub } from "react-icons/vsc";
 import { IconType } from "react-icons";
 import { motion, AnimatePresence } from "framer-motion";
 
+interface TechnologyData {
+  [key: string]: Technology
+}
+
+interface Technology {
+  icons: IconType[],
+  texts: string[]
+}
+
+const technologyData: TechnologyData = {
+  "Front End": {
+    icons: [
+      IoLogoJavascript,
+      SiTypescript,
+      SiReact,
+      SiHtml5,
+      SiCss3,
+      TbBrandNextjs,
+    ],
+    texts: [
+      "JavaScript",
+      "TypeScript",
+      "ReactJs",
+      "HTML 5",
+      "CSS 3",
+      "Next.js",
+    ],
+  },
+  "Skill Tools": {
+    icons: [VscGithub, SiAxios, SiChakraui, SiJsonwebtokens, SiTailwindcss],
+    texts: ["GitHub", "Axios", "Chakra UI", "JWT", "TailWind"],
+  },
+  "Back End": {
+    icons: [IoLogoNodejs, SiExpress, SiMongodb, SiMysql, TbApi, SiPrisma],
+    texts: ["NodeJs", "Express", "MongoDB", "MySQL", "API REST", "Prisma"]
+  }
+};
+
 const SkillsSection = () => {
-  const [colorMonitor, setColorMonitor] = useState<string>("white");
-  const [colorKeyboard, setColorKeyboard] = useState<string>("white");
-  const [colorData, setColorData] = useState<string>("white");
-  const [technology, setTechnology] = useState<string>("");
-  let iconsTypeArray: IconType[] = [];
-  let iconsTextArray: string[] = [];
+  const color = useColorModeValue("gray.600", "white");
+  const colorHover = useColorModeValue("green.200", "purple.400");
+  const colorCard = useColorModeValue("green.500", "purple.800")
+  const [selectedTechnology, setSelectedTechnology] = useState<string>("")
 
-  const frontEndIcons = [
-    IoLogoJavascript,
-    SiTypescript,
-    SiReact,
-    SiHtml5,
-    SiCss3,
-    TbBrandNextjs,
-  ];
-
-  const frontEndText = [
-    "JavaScript",
-    "TypeScript",
-    "ReactJs",
-    "HTML 5",
-    "CSS 3",
-    "Next.js",
-  ];
-
-  const toolsIcons = [
-    VscGithub,
-    SiAxios,
-    SiChakraui,
-    SiJsonwebtokens,
-    SiTailwindcss,
-  ];
-
-  const toolsText = ["GitHub", "Axios", "Chakra UI", "JWT", "TailWind"];
-
-  const backEndIcons = [IoLogoNodejs, SiExpress, SiMongodb, TbApi, SiPrisma];
-
-  const backEndText = ["NodeJs", "Express", "MongoDB", "API REST", "Prisma"];
-
-  if (technology === "Front End") {
-    iconsTypeArray = frontEndIcons;
-    iconsTextArray = frontEndText;
-  } else if (technology === "Tools") {
-    iconsTypeArray = toolsIcons;
-    iconsTextArray = toolsText;
-  } else if (technology === "Back End") {
-    iconsTypeArray = backEndIcons;
-    iconsTextArray = backEndText;
+  const handleTechnologyClick = (technology: string) => {
+    setSelectedTechnology(technology)
   }
 
-  const renderIconsChange = (icons: IconType[], stack: string) => {
+  const renderIconsChange = () => {
+    const { icons, texts } = technologyData[selectedTechnology]
     return (
       <Stack spacing={0}>
         <Flex justifyContent={"space-around"} gap={2} flexWrap={"wrap"}>
           <AnimatePresence>
             {icons.map((iconText: IconType, index: number) => (
               <motion.div
-                key={iconsTextArray[index]}
+                key={texts[index]}
                 initial={{
                   opacity: 0,
                   translateX: 50,
@@ -98,10 +97,10 @@ const SkillsSection = () => {
                 transition={{ duration: 0.3, delay: index * 0.2 }}
               >
                 <Card
-                  bg={"purple.900"}
+                  bg={colorCard}
                   border={"1px solid"}
                   color={"white"}
-                  _hover={{ color: "purple.400" }}
+                  _hover={{ color: colorHover }}
                   w={{ base: "20vw", xl: "10vw" }}
                   h={{ base: "12vh", md: "10vh" }}
                 >
@@ -113,7 +112,7 @@ const SkillsSection = () => {
                   >
                     <Icon as={iconText} boxSize={{ base: 4, md: 8, xl: 8 }} />
                     <Text fontSize={{ base: "0.4em", md: "1em" }}>
-                      {iconsTextArray[index]}
+                      {texts[index]}
                     </Text>
                   </CardBody>
                 </Card>
@@ -123,27 +122,6 @@ const SkillsSection = () => {
         </Flex>
       </Stack>
     );
-  };
-
-  const handleMonitorClick = () => {
-    setColorMonitor("purple.500");
-    setColorKeyboard("white");
-    setColorData("white");
-    setTechnology("Front End");
-  };
-
-  const handleKeyboardClick = () => {
-    setColorKeyboard("purple.500");
-    setColorData("white");
-    setColorMonitor("white");
-    setTechnology("Tools");
-  };
-
-  const handleDataClick = () => {
-    setColorData("purple.500");
-    setColorKeyboard("white");
-    setColorMonitor("white");
-    setTechnology("Back End");
   };
 
   return (
@@ -159,13 +137,16 @@ const SkillsSection = () => {
         initial={{ opacity: 0, x: -20 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 2 }}
+        viewport={{ once: true }}
       >
-        <Heading alignSelf={"flex-end"}>Skills</Heading>
+        <Heading alignSelf={"flex-end"} color={color} pl={{ xl: "8vw" }}>
+          Skills
+        </Heading>
         <Flex
           alignItems={"center"}
           justifyContent={"space-evenly"}
           gap={{ base: 0, xl: 0 }}
-          ml={"8vw"}
+          ml={{base: "4vw", xl: "8vw"}}
           pb={20}
           maxWidth={"65vw"}
           flexDir={{ base: "column", xl: "row" }}
@@ -175,41 +156,45 @@ const SkillsSection = () => {
               <Icon
                 as={Monitor}
                 pos={"relative"}
-                color={colorMonitor}
+                color={selectedTechnology == "Front End" ? colorHover : color}
                 boxSize={{ base: "150px", md: "280px", xl: "300px" }}
                 transitionDuration={"300ms"}
-                _hover={{ color: "purple.500", cursor: "pointer" }}
+                _hover={{ color: colorHover, cursor: "pointer" }}
                 onClick={() => {
-                  handleMonitorClick();
+                  handleTechnologyClick("Front End");
                 }}
               />
               <Icon
                 as={Keyboard}
                 pos={"relative"}
-                color={colorKeyboard}
+                color={selectedTechnology == "Skill Tools" ? colorHover : color}
                 boxSize={{ base: "150px", md: "280px", xl: "300px" }}
                 transitionDuration={"300ms"}
-                _hover={{ color: "purple.500", cursor: "pointer" }}
-                onClick={handleKeyboardClick}
+                _hover={{ color: colorHover, cursor: "pointer" }}
+                onClick={() => {
+                  handleTechnologyClick("Skill Tools")
+                }}
               />
             </Flex>
             <Icon
               as={Data}
               pos={"relative"}
-              color={colorData}
+              color={selectedTechnology == "Back End" ? colorHover : color}
               right={{ xl: 10 }}
               boxSize={{ base: "150px", md: "280px", xl: "300px" }}
               transitionDuration={"300ms"}
-              _hover={{ color: "purple.500", cursor: "pointer" }}
-              onClick={handleDataClick}
+              _hover={{ color: colorHover, cursor: "pointer" }}
+              onClick={() => {
+                handleTechnologyClick("Back End")
+              }}
             />
           </Flex>
           <Box pos={"relative"} bottom={{ base: 0, xl: 0 }}>
-            {technology === "" ? (
+            {selectedTechnology == "" ? (
               <Text
                 textAlign={"center"}
                 fontSize={{ base: "sm", md: "lg", xl: "xl" }}
-                color={"white"}
+                color={color}
               >
                 Desvende os segredos ocultos do computador e descubra as
                 tecnologias que impulsionam sua operação. Clique nas partes e
@@ -229,9 +214,9 @@ const SkillsSection = () => {
                   color={"white"}
                   fontSize={{ base: "sm", md: "xl" }}
                 >
-                  {technology}
+                  {selectedTechnology}
                 </Text>
-                {renderIconsChange(iconsTypeArray, technology)}
+                {renderIconsChange()}
               </Box>
             )}
           </Box>

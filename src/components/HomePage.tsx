@@ -1,9 +1,14 @@
 import React from "react";
 import { Link } from "react-scroll";
 import { motion } from "framer-motion";
-import { Box, Flex, HStack, Button } from "@chakra-ui/react";
+import { Box, Flex, HStack, Button, useColorModeValue } from "@chakra-ui/react";
 
 const HomePage = () => {
+  const color = useColorModeValue('gray.600', 'white')
+  const colorBorder = useColorModeValue('black', 'white')
+  const colorSubs = useColorModeValue('green.400', 'purple.400')
+  const colorHover = useColorModeValue('green.200', 'purple.400')
+
   return (
     <Flex
       as={"section"}
@@ -13,8 +18,8 @@ const HomePage = () => {
       alignItems={"center"}
     >
       <Box
-        color={"white"}
-        paddingLeft={{ base: 10, md: "10vw", xl: "10vw" }}
+        color={color}
+        paddingLeft={{ base: 10, md: "10vw", xl: "18vw" }}
         paddingBottom={{ base: 18 }}
       >
         <Box
@@ -47,7 +52,7 @@ const HomePage = () => {
           left={{ md: 2 }}
           fontSize={{ base: "20px", md: "40px", xl: "45px" }}
           fontWeight={300}
-          color={"purple.400"}
+          color={colorSubs}
           p={0}
           m={0}
         >
@@ -80,12 +85,12 @@ const HomePage = () => {
                 paddingX={{ base: 4, md: 6, xl: 8 }}
                 h={{ base: 8, md: 10 }}
                 variant={"ghost"}
-                color={"white"}
+                color={color}
                 borderRadius={""}
-                border={"1px solid white"}
+                border={`1px solid ${colorBorder}`}
                 transitionDuration={"500ms"}
                 _hover={{
-                  bg: "purple.900",
+                  bg: colorHover,
                 }}
               >
                 Skills
@@ -104,12 +109,12 @@ const HomePage = () => {
                 paddingX={{ base: 4, md: 6, xl: 8 }}
                 h={{ base: 8, md: 10 }}
                 variant={"ghost"}
-                color={"white"}
+                color={color}
                 borderRadius={""}
-                border={"1px solid white"}
+                border={`1px solid ${colorBorder}`}
                 transitionDuration={"500ms"}
                 _hover={{
-                  bg: "purple.900",
+                  bg: colorHover,
                 }}
               >
                 Projects
@@ -128,12 +133,12 @@ const HomePage = () => {
                 paddingX={{ base: 4, md: 6, xl: 8 }}
                 h={{ base: 8, md: 10 }}
                 variant={"ghost"}
-                color={"white"}
+                color={color}
                 borderRadius={""}
-                border={"1px solid white"}
+                border={`1px solid ${colorBorder}`}
                 transitionDuration={"500ms"}
                 _hover={{
-                  bg: "purple.900",
+                  bg: colorHover,
                 }}
               >
                 Contact
@@ -150,12 +155,12 @@ const HomePage = () => {
                 h={{ base: 8, md: 10 }}
                 display={{ base: "none", md: "flex" }}
                 variant={"ghost"}
-                color={"white"}
+                color={color}
                 borderRadius={""}
-                border={"1px solid white"}
+                border={`1px solid ${colorBorder}`}
                 transitionDuration={"500ms"}
                 _hover={{
-                  bg: "purple.900",
+                  bg: colorHover,
                 }}
               >
                 Download CV

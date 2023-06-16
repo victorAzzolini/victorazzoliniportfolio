@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import { motion } from "framer-motion";
 import {
   AspectRatio,
@@ -10,24 +10,35 @@ import {
   Stack,
   Text,
   Image,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
 
-
-
-const ProjectOne = () => {
+const Projects = () => {
+  const color = useColorModeValue("gray.600", "white");
+  
   return (
-    <Flex as={"section"} id="projects" flexDir={"column"} pt={"10vh"}  >
+    <Flex
+      as={"section"}
+      id="projects"
+      flexDir={"column"}
+      pt={"10vh"}
+      color={color}
+    >
       <motion.div
         initial={{ opacity: 0, x: -20 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 2 }}
+        viewport={{ once: true }}
       >
-        <Heading pl={"10vw"}>Projects</Heading>
-        <Flex>
-          
-        </Flex>
-        <Stack pl={{base: "10vw",xl:"18vw"}} pr={"12vw"} pt={"6vh"} display={"flex"}>
+        <Heading pl={{ base: "10vw", xl: "18vw" }}>Projects</Heading>
+        <Flex></Flex>
+        <Stack
+          pl={{ base: "10vw", xl: "18vw" }}
+          pr={"12vw"}
+          pt={"6vh"}
+          display={"flex"}
+        >
           <Heading fontWeight={500}>Rescue the Animals</Heading>
           <Text>
             Projeção de um site para uma ONG de resgate e conservação da Fauna
@@ -54,14 +65,15 @@ const ProjectOne = () => {
           <Card
             maxW={"1200px"}
             mt={8}
-            ml={{base: "10vw",xl:"18vw"}}
+            ml={{ base: "10vw", xl: "18vw" }}
             mr={"15vw"}
             transitionDuration={"200ms"}
+            bg={color}
             _hover={{ transform: "scale(1.02)" }}
           >
             <CardBody p={1}>
               <AspectRatio ratio={16 / 9}>
-                <Image src={"/siteRescurAnimals.png"} alt="animais site"/>
+                <Image src={"/siteRescurAnimals.png"} alt="animais site" />
               </AspectRatio>
             </CardBody>
           </Card>
@@ -71,8 +83,9 @@ const ProjectOne = () => {
         initial={{ opacity: 0, x: -20 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 2 }}
+        viewport={{ once: true }}
       >
-        <Stack pl={{base: "10vw",xl:"18vw"}} pr={"12vw"} pt={"10vh"}>
+        <Stack pl={{ base: "10vw", xl: "18vw" }} pr={"12vw"} pt={"10vh"}>
           <Heading fontWeight={500}>Lepetit Blog</Heading>
           <Text>
             Projeção de um blog usando json server para treinair maneiras de se
@@ -101,9 +114,10 @@ const ProjectOne = () => {
           <Card
             maxW={"1200px"}
             mt={8}
-            ml={{base: "10vw",xl:"18vw"}}
+            ml={{ base: "10vw", xl: "18vw" }}
             mr={"15vw"}
             transitionDuration={"200ms"}
+            bg={color}
             _hover={{ transform: "scale(1.02)" }}
           >
             <CardBody p={1}>
@@ -114,9 +128,8 @@ const ProjectOne = () => {
           </Card>
         </Link>
       </motion.div>
-      
     </Flex>
   );
 };
 
-export default ProjectOne;
+export default Projects;

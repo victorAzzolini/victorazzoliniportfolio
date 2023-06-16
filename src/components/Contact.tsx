@@ -10,11 +10,13 @@ import {
   Input,
   Button,
   useToast,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
 
 const Contact = () => {
+  const color = useColorModeValue("gray.600", "white");
   const [formsInputs, setFormsInputs] = useState<any>({
     user_name: "",
     user_email: "",
@@ -86,6 +88,7 @@ const Contact = () => {
         initial={{ opacity: 0, x: -20 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 2 }}
+        viewport={{ once: true }}
       >
         <Flex
           alignItems={"center"}
@@ -96,7 +99,7 @@ const Contact = () => {
           bg={{ base: "none", xl: "blackAlpha.300" }}
           border={{ base: "none", xl: "1px solid" }}
           borderRadius={"md"}
-          boxShadow={"xl"}
+          boxShadow={{base: "none", xl:"xl"}}
           mt={{ base: "10" }}
         >
           <Flex
@@ -107,6 +110,7 @@ const Contact = () => {
           >
             <Heading
               fontSize={{ base: "xl", md: "3xl" }}
+              color={color}
               padding={10}
               fontWeight={500}
             >

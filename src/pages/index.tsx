@@ -5,7 +5,7 @@ const inter = Space_Grotesk({ subsets: ["latin"] });
 
 import HomePage from "@/components/HomePage";
 import SkillsSection from "@/components/SkillsSection";
-import ProjectOne from "@/components/ProjectOne";
+import Projects from "@/components/Projects";
 import SideBar from "@/components/SideBar";
 import Contact from "@/components/Contact";
 
@@ -22,7 +22,7 @@ export default function Home() {
         <SideBar />
         <HomePage />
         <SkillsSection />
-        <ProjectOne />
+        <Projects />
         <Contact/>
       </main>
     </>
