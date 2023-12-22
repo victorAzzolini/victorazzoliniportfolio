@@ -140,7 +140,7 @@ const Contact = () => {
                     bg="none"
                     borderBottom={"2px"}
                   >
-                    Name
+                    Name:
                   </InputLeftAddon>
                   <Input
                     type="text"
@@ -162,7 +162,7 @@ const Contact = () => {
                     bg="none"
                     borderBottom={"2px"}
                   >
-                    Email
+                    Email:
                   </InputLeftAddon>
                   <Input
                     type="email"
@@ -184,7 +184,7 @@ const Contact = () => {
                     bg="none"
                     borderBottom={"2px"}
                   >
-                    Message
+                    Message:
                   </InputLeftAddon>
                   <Input
                     type="text"
