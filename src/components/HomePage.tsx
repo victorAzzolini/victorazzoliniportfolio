@@ -1,30 +1,41 @@
 import React from "react";
 import { Link } from "react-scroll";
 import { motion } from "framer-motion";
-import { Box, Flex, HStack, Button, useColorModeValue } from "@chakra-ui/react";
+import {
+  Box,
+  Flex,
+  HStack,
+  Button,
+  useColorModeValue,
+  Image,
+} from "@chakra-ui/react";
 
 const HomePage = () => {
-  const color = useColorModeValue('gray.600', 'white')
-  const colorBorder = useColorModeValue('black', 'white')
-  const colorSubs = useColorModeValue('green.400', 'purple.400')
-  const colorHover = useColorModeValue('green.200', 'purple.400')
+  const color = useColorModeValue("gray.600", "white");
+  const colorBorder = useColorModeValue("black", "white");
+  const colorSubs = useColorModeValue("green.400", "purple.400");
+  const colorHover = useColorModeValue("green.200", "purple.400");
 
   return (
     <Flex
       as={"section"}
       id="home"
       h={"100vh"}
-      justifyContent={"flex-start"}
+      justifyContent={{base: "center", lg:"flex-start"}}
+      flexDir={{base: "column", lg: "row"}}
+      width={{base: "100%"}}
       alignItems={"center"}
     >
       <Box
         color={color}
-        paddingLeft={{ base: 10, md: "10vw", xl: "18vw" }}
-        paddingBottom={{ base: 18 }}
+        paddingLeft={{ base: 0, md: "4vw", lg: "4vw", xl: "8vw", "2xl": "14vw" }}
+        paddingBottom={{ base: 10 }}
+        
+        width={{base: "80%", lg: "50%"}}
       >
         <Box
           lineHeight={"40%"}
-          fontSize={{ base: "6xl", md: "130px", xl: "140px" }}
+          fontSize={{ base: "6xl", md: "100px", lg: "100px", xl: "120px" }}
           fontWeight={600}
         >
           <motion.div
@@ -144,10 +155,7 @@ const HomePage = () => {
                 Contact
               </Button>
             </Link>
-            <a
-              href={"/curricullum.pdf"}
-              target="_blank"
-            >
+            <a href={"/curricullum.pdf"} target="_blank">
               <Button
                 fontSize={{ base: "12px", md: "16px", xl: "18px" }}
                 paddingY={{ base: 0, md: 2, xl: 4 }}
@@ -167,6 +175,25 @@ const HomePage = () => {
               </Button>
             </a>
           </HStack>
+        </motion.div>
+      </Box>
+      <Box>
+        <motion.div
+          initial={{ x: "-10vw", opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ type: "spring", duration: 2, bounce: 0.3 }}
+          viewport={{ once: true }}
+        >
+          <Image
+            maxWidth={{ base: "75%", lg: "80%", xl: "80%" }}
+            margin={{base: "0 auto"}}
+            src={
+              color == "gray.600"
+                ? "/victor-banner-image.png"
+                : "/victor-banner-dark.png"
+            }
+            alt="Home Page Image"
+          />
         </motion.div>
       </Box>
     </Flex>

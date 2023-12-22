@@ -16,7 +16,7 @@ import { ExternalLinkIcon } from "@chakra-ui/icons";
 
 const Projects = () => {
   const color = useColorModeValue("gray.600", "white");
-  
+
   return (
     <Flex
       as={"section"}
@@ -39,14 +39,61 @@ const Projects = () => {
           pt={"6vh"}
           display={"flex"}
         >
+          <Heading fontWeight={500}>PROSUM</Heading>
+          <Text>Site criado para uma revendedora de planos de saúde.</Text>
+          <Text fontWeight={500}>
+            <Text fontWeight={800} as={"span"}>
+              Tecnologias:
+            </Text>{" "}
+            HTML5 | CSS3 | JavaScript | jQuery | BootsTrap | PHP | Figma |
+          </Text>
+          <Text>
+            <Text fontWeight={800} as={"span"}>
+              Git Hub:
+            </Text>
+            <Link
+              href="https://github.com/Digitall-Evolution/ProSum"
+              isExternal
+              ml={2}
+            >
+              Prosum <ExternalLinkIcon mx="2px" />
+            </Link>
+          </Text>
+        </Stack>
+        <Link href="https://www.prosumplanodesaude.com.br/" isExternal>
+          <Card
+            maxW={"1200px"}
+            mt={8}
+            ml={{ base: "10vw", xl: "18vw" }}
+            mr={"15vw"}
+            transitionDuration={"200ms"}
+            bg={color}
+            _hover={{ transform: "scale(1.02)" }}
+          >
+            <CardBody p={1}>
+              <AspectRatio ratio={16 / 9}>
+                <Image src={"/prosumSite.png"} alt="animais site" objectFit='cover' />
+              </AspectRatio>
+            </CardBody>
+          </Card>
+        </Link>
+        <Stack
+          pl={{ base: "10vw", xl: "18vw" }}
+          pr={"12vw"}
+          pt={"6vh"}
+          display={"flex"}
+        >
           <Heading fontWeight={500}>Rescue the Animals</Heading>
           <Text>
             Projeção de um site para uma ONG de resgate e conservação da Fauna
             Silveste.
           </Text>
           <Text fontWeight={500}>
-            Tecnologias: ReactJs | Next.js | JavaScript/TypeScript | NodeJs |
-            Prisma | MongoDB | API REST | Chakra UI | Axios | JWT |
+            <Text fontWeight={800} as={"span"}>
+              Tecnologias:
+            </Text>{" "}
+            ReactJs | Next.js | JavaScript/TypeScript | NodeJs | Prisma |
+            MongoDB | API REST | Chakra UI | Axios | JWT |
           </Text>
           <Text>
             <Text fontWeight={800} as={"span"}>

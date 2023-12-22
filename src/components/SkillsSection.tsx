@@ -73,7 +73,7 @@ const SkillsSection = () => {
   const color = useColorModeValue("gray.600", "white");
   const colorHover = useColorModeValue("green.200", "purple.400");
   const colorCard = useColorModeValue("green.500", "purple.800")
-  const [selectedTechnology, setSelectedTechnology] = useState<string>("")
+  const [selectedTechnology, setSelectedTechnology] = useState<string>("Front End")
 
   const handleTechnologyClick = (technology: string) => {
     setSelectedTechnology(technology)
