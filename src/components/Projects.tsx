@@ -39,28 +39,16 @@ const Projects = () => {
           pt={"6vh"}
           display={"flex"}
         >
-          <Heading fontWeight={500}>PROSUM</Heading>
-          <Text>Site criado para uma revendedora de planos de saúde.</Text>
+          <Heading fontWeight={500}>Site Pinguim Films</Heading>
+          <Text>Site criada para um produtora de vídeos.</Text>
           <Text fontWeight={500}>
             <Text fontWeight={800} as={"span"}>
               Tecnologias:
             </Text>{" "}
             HTML5 | CSS3 | JavaScript | jQuery | BootsTrap | PHP | Figma |
           </Text>
-          <Text>
-            <Text fontWeight={800} as={"span"}>
-              Git Hub:
-            </Text>
-            <Link
-              href="https://github.com/Digitall-Evolution/ProSum"
-              isExternal
-              ml={2}
-            >
-              Prosum <ExternalLinkIcon mx="2px" />
-            </Link>
-          </Text>
         </Stack>
-        <Link href="https://www.prosumplanodesaude.com.br/" isExternal>
+        <Link href="https://www.pinguimfilms.com/" isExternal>
           <Card
             maxW={"1200px"}
             mt={8}
@@ -72,7 +60,7 @@ const Projects = () => {
           >
             <CardBody p={1}>
               <AspectRatio ratio={16 / 9}>
-                <Image src={"/prosumSite.png"} alt="animais site" objectFit='cover' />
+                <Image src={"/screen-pinguim.png"} alt="animais site" objectFit='cover' />
               </AspectRatio>
             </CardBody>
           </Card>
